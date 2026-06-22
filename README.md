@@ -29,3 +29,12 @@ Library .NET 10 API created with purpose of learning Entity Framework and reposi
     - paste in SSMS query tab
     - run / F5
 
+## II Exercise 1
+
+1. Checkout to branch ```exercises/1_search-books-by-title```
+    - if vs not working, open git bash in project folder and run ```git checkout exercises/1_search-books-by-title```
+1. Implement method ```SearchAsync``` from ```BookRepository```
+2. Return all books from database which have in title term sent as parameter
+3. Hints:
+    - use ```.ToListAsync()``` to make method async (**async - not in scope for this session**)
+4. Test method implementation by calling ```api/books/search``` endpoint
