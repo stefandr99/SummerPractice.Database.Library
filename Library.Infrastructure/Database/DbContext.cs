@@ -10,6 +10,7 @@ namespace Library.Infrastructure.Database
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Book>()
+                .HasQueryFilter(b => !b.IsDeleted)
                 .Property(x => x.Id)
                 .ValueGeneratedOnAdd();
 

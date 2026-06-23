@@ -47,10 +47,14 @@ namespace Library.Infrastructure.Repositories
             }
         }
 
-        // TODO: Implement
         public async Task<List<Book>> GetTopRatedBooksAsync()
         {
-            return [];
+            return await context.Books
+                .Include(x => x.Author)
+                .Where(x => x.PublicationYear > 2010)
+                .Where(x => x.Rating >= 4)
+                .OrderByDescending(x => x.Rating)
+                .ToListAsync();
         }
 
         public async Task SaveChangesAsync()
