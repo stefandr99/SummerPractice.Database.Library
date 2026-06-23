@@ -39,7 +39,7 @@ Library .NET 10 API created with purpose of learning Entity Framework and reposi
     - use ```.ToListAsync()``` to make method async (**async - not in scope for this session**)
 4. Test method implementation by calling ```api/books/search``` endpoint
 
-## III. Exercise 3
+## III. Exercise 2
 
 1. Checkout to branch ``` ```
     - if vs not working, open git bash in project folder and run ```git checkout ```
@@ -50,3 +50,14 @@ Library .NET 10 API created with purpose of learning Entity Framework and reposi
 4. Run ```dotnet ef database update``` to apply migration
 5. Check table ```Book``` in SSMS
 
+## IV. Exercise 3
+1. Checkout to branch ``` ```
+    - if vs not working, open git bash in project folder and run ```git checkout ```
+2. Run INSERT SQL command from file: ```Scripts/booksSeed.sql```
+2. A new flow has been added in application: **get books by rating with authors**
+3. Implement ```GetTopRatedBooksAsync``` method in ```BookRepository``` respecting following requirements:
+    - Published after 2010
+    - Rating >= 4
+    - Include Author
+    - Order by Rating descending
+4. Test endpoint ```GET /api/books/top```
