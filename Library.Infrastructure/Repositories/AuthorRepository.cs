@@ -27,7 +27,7 @@ namespace Library.Infrastructure.Repositories
 
         public async Task AddAsync(Author entity)
         {
-            var id = await context.Authors.AddAsync(entity);
+            await context.Authors.AddAsync(entity);
         }
 
         public async Task DeleteAsync(Guid id)
