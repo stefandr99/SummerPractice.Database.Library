@@ -57,6 +57,23 @@ namespace Library.Infrastructure.Repositories
                 .ToListAsync();
         }
 
+        public async Task<List<Book>> SearchByRatingAsync(int minimumRating)
+        {
+            return await context.Books
+                .FromSqlRaw("""
+                                SELECT
+                                    Id,
+                                    IsDeleted,
+                                    Title,
+                                    PublicationYear,
+                                    Rating,
+                                    AuthorId
+                                FROM Books
+                                WHERE Rating >= {0}
+                            """, minimumRating)
+                .ToListAsync();
+        }
+
         public async Task SaveChangesAsync()
         {
             await context.SaveChangesAsync();

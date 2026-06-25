@@ -103,6 +103,11 @@ namespace Library.Infrastructure.Repositories
             return books.ToList();
         }
 
+        public Task<List<Book>> SearchByRatingAsync(int minimumRating)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task AddAsync(Book entity)
         {
             const string sql = """
