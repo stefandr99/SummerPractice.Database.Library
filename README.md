@@ -8,7 +8,10 @@ Library .NET 10 API created with purpose of learning Entity Framework and reposi
 
 1. Go to ```scripts``` folder
 2. Open powershell in this folder
-2. Run: ```.\createDatabase.ps1```
+3. Run: ```.\createDatabase.ps1```
+4. In case you get ```cannot be loaded
+because running scripts is disabled on this system```
+Run ```Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser``` and try again
 
 ### I.2. Install dotnet tool
 
@@ -24,6 +27,7 @@ Library .NET 10 API created with purpose of learning Entity Framework and reposi
 4. Run in terminal ```dotnet ef migrations add InitialMigration```
 5. Check migration in ```Migrations``` folder
 6. Run ```dotnet ef database update``` to apply migration
+7. Open SSMS, choose MSSQLLocalDB server, check ```LibraryDb``` tables
 7. In case migrations do not work: 
     - copy content of file ```createDatabases.sql```
     - paste in SSMS query tab
