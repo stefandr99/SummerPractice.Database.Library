@@ -17,6 +17,14 @@ namespace Library.Infrastructure.Database
             modelBuilder.Entity<Author>()
                 .Property(x => x.Id)
                 .ValueGeneratedOnAdd();
+
+            /**
+             * modelBuilder.Entity<Book>()
+                .HasOne(x => x.Author)
+                .WithMany(x => x.Books)
+                .HasForeignKey(x => x.AuthorId)
+                .OnDelete(DeleteBehavior.Cascade);
+             */
         }
 
         public DbSet<Book> Books { get; set; }
