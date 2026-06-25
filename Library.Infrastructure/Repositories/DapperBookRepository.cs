@@ -103,9 +103,28 @@ namespace Library.Infrastructure.Repositories
             return books.ToList();
         }
 
-        public Task<List<Book>> SearchByRatingAsync(int minimumRating)
+        public async Task<List<Book>> SearchByRatingAsync(int minimumRating)
         {
-            throw new NotImplementedException();
+            const string sql = """
+                SELECT
+                    Id,
+                    IsDeleted,
+                    Title,
+                    PublicationYear,
+                    Rating,
+                    AuthorId
+                FROM Books
+                WHERE Rating >= @MinimumRating
+                ORDER BY Rating DESC
+                """;
+
+            using var connection = CreateConnection();
+
+            var books = await connection.QueryAsync<Book>(
+                sql,
+                new { MinimumRating = minimumRating });
+
+            return books.ToList();
         }
 
         public async Task AddAsync(Book entity)
